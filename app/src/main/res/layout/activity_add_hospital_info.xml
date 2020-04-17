@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddHospitalInfoActivity">
+
+    <EditText
+        android:id="@+id/addName"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_marginTop="10dp"
+        android:hint="Hospital Name"
+        android:inputType="text"
+        android:text=""
+        android:textSize="20dp" />
+
+
+    <EditText
+        android:id="@+id/addPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="Hospital's Phone"
+        android:inputType="phone"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/addLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="Latitude"
+        android:inputType="numberDecimal"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/addLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="Longitude"
+        android:inputType="numberDecimal"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/addAlert"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:layout_marginTop="10dp"
+        android:hint="Alert Message"
+        android:inputType="text"
+        android:text=""
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="Add Info"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:onClick="AddHospitalInfo"
+        />
+
+</LinearLayout>
