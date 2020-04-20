@@ -5,17 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#000"
+    android:weightSum="6"
     tools:context=".AddHospitalInfoActivity">
 
     <EditText
         android:id="@+id/addName"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Hospital Name"
         android:inputType="text"
         android:text=""
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:background="#FFFFFF"
+        android:layout_weight="1"
+        />
 
 
     <EditText
@@ -27,6 +32,8 @@
         android:inputType="phone"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:layout_weight="1"
         />
 
     <EditText
@@ -38,6 +45,8 @@
         android:inputType="numberDecimal"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:layout_weight="1"
         />
 
     <EditText
@@ -49,17 +58,22 @@
         android:inputType="numberDecimal"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:layout_weight="1"
         />
 
     <EditText
         android:id="@+id/addAlert"
         android:layout_width="match_parent"
-        android:layout_height="89dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Alert Message"
         android:inputType="text"
         android:text=""
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:background="#FFFFFF"
+        android:layout_weight="1"
+        />
 
     <Button
         android:id="@+id/addBtn"
@@ -70,6 +84,7 @@
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:onClick="AddHospitalInfo"
+        android:layout_weight="1"
         />
 
 </LinearLayout>

@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:background="#FCFCFC"
             android:onClick="showHospitalList"
-            android:text="Hospital   List"
+            android:text="Hospital List"
             android:textColor="#000"
             android:textSize="20sp" />
     </androidx.cardview.widget.CardView>

@@ -2,6 +2,8 @@ package com.example.hospitalfinder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,20 +36,34 @@ public class HospitalListActivity extends AppCompatActivity {
     private CustomAdapter customAdapter;
     private String role;
     private ListView hopitalLV;
+    private RecyclerView recyclerView;
+    private CustomAdapterRecyclerView customAdapterRecyclerView;
+    private DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_list_view);
 
+        recyclerView = (RecyclerView) findViewById(R.id.recylerID);
+
+        mAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+
         //hospitalList = getIntent().getParcelableExtra("hospitalList");
         hospitalList = new ArrayList<>();
         hospitalList = (ArrayList<Hospital>) getIntent().getSerializableExtra("hospitalList");
-        customAdapter = new CustomAdapter(HospitalListActivity.this,hospitalList);
+       // customAdapter = new CustomAdapter(HospitalListActivity.this,hospitalList);
+        customAdapterRecyclerView = new CustomAdapterRecyclerView(HospitalListActivity.this,hospitalList);
 
-        hopitalLV = (ListView) findViewById(R.id.hospitalLVId);
-        role = getIntent().getStringExtra("role");
-        hopitalLV.setAdapter(customAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        //hopitalLV = (ListView) findViewById(R.id.hospitalLVId);
+       // role = getIntent().getStringExtra("role");
+        recyclerView.setAdapter(customAdapterRecyclerView);
 
     }
 
@@ -56,7 +72,7 @@ public class HospitalListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_layout,menu);
         MenuItem item = menu.findItem(R.id.addItem);
-        if(role == "admin") item.setVisible(false);
+        item.setVisible(false);
         return super.onCreateOptionsMenu(menu);
     }
 

@@ -8,8 +8,8 @@
     android:background="#000"
     tools:context=".HospitalListActivity">
 
-    <ListView
-        android:id="@+id/hospitalLVId"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylerID"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

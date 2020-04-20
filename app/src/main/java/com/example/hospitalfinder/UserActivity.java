@@ -52,7 +52,7 @@ public class UserActivity extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationClient;
     private static final int MY_PERMISSION_REQUEST_COARSE_LOCATION = 1;
     private LocationFinder locationFinder;
-
+    AlertDialog.Builder builder;
 
 
     @Override
@@ -65,8 +65,22 @@ public class UserActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         resquestPermission();
         hospitalList = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+        databaseReference.keepSynced(true);
         databaseReferenceHospital = (DatabaseReference) FirebaseDatabase.getInstance().getReference("HospitalInfo");
+        databaseReferenceHospital.keepSynced(true);
+        builder = new AlertDialog.Builder(UserActivity.this);
+
+
+
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -83,13 +97,14 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+
+
         databaseReferenceHospital.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 hospitalList.clear();
-                for(DataSnapshot data: dataSnapshot.getChildren())
-                {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
                     Hospital hospital = data.getValue(Hospital.class);
                     hospitalList.add(hospital);
                 }
@@ -101,13 +116,15 @@ public class UserActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_layout,menu);
         MenuItem item = menu.findItem(R.id.addItem);
-        if(role == "admin") item.setVisible(false);
+        item.setVisible(false);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -136,6 +153,7 @@ public class UserActivity extends AppCompatActivity {
     public void showHospitalList(View view) {
         Intent intent = new Intent(UserActivity.this,HospitalListActivity.class);
 
+
         intent.putExtra("role",role);
         intent.putExtra("hospitalList", (Serializable) hospitalList);
 
@@ -143,7 +161,6 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public void nearByHospital(View view) {
-
 
 
         mLocation = locationFinder.getLocation();

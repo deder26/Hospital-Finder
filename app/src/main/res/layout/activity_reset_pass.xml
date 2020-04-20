@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#000"
     tools:context=".ResetPassActivity">
 
     <ProgressBar
@@ -22,7 +23,9 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:hint="write your email here"
+        android:background="#FFFFFF"
         android:inputType="textEmailAddress"
+        android:layout_margin="20dp"
         />
     <Button
         android:layout_width="match_parent"
@@ -30,7 +33,8 @@
         android:text="ResetPass"
         android:textSize="20sp"
         android:onClick="ResetPass"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         />
 
 
